@@ -1,0 +1,21 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Alert {
+  id          Int      @id @default(autoincrement())
+  latitude    Float
+  longitude   Float
+  description String
+  category    String   @default("other")
+  upvotes     Int      @default(0)
+  status      String   @default("ACTIVE")
+  timestamp   DateTime @default(now())
+}
